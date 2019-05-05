@@ -1,3 +1,0 @@
-<!--components/common/aldNavigetor/index.wxml-->
-<view bindtap='ownerNavigate' bindtouchstart='touchStart' bindtouchend='touchEnd' class="full-mask">
-</view>

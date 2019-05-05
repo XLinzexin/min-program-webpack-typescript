@@ -1,19 +1,6 @@
 {
-  "pages": ["pages/main/home/index", "pages/main/user/index"],
-  "subPackages": [
-    {
-      "root": "pages/order/",
-      "pages": ["list/index"]
-    }
-  ],
-  "usingComponents": {
-    "auth-mask": "components/authMask/index",
-    "list-loader": "components/listLoader/index",
-    "lists-loader": "components/listsLoader/index",
-    "owner-navigator": "components/ownerNavigator/index"
-  },
+  "pages": ["pages/main/home/index"],
   "tabBar": {
-    "custom": true,
     "list": [
       {
         "pagePath": "pages/main/home/index",
