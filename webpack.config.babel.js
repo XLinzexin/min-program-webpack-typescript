@@ -52,7 +52,7 @@ export default (env = {}) => {
 				// isWechat &&
 				// 	`es6-promise/dist/es6-promise.auto${isDev ? ".min" : ""}.js`,
 
-				'./src/app.js',
+				'./src/app.ts',
 			].filter(Boolean),
 		},
 		output: {
