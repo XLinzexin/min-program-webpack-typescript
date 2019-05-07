@@ -1,5 +1,5 @@
-// import '@/utils/extend';
-// import '@/utils/prevload';
+import '@/utils/extend';
+import '@/utils/prevload';
 
 App({
 });

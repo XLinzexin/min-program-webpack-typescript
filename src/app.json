@@ -1,17 +1,5 @@
 {
   "pages": ["pages/main/home/index"],
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/main/home/index",
-        "text": "组件"
-      },
-      {
-        "pagePath": "pages/main/user/index",
-        "text": "接口"
-      }
-    ]
-  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

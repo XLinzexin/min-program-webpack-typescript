@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "start": "webpack --watch --progress",
-    "dev": "webpack --watch --progress",
-    "build": "cross-env NODE_ENV=production webpack --env.target=Wechat --env.min",
+    "dev": "webpack --watch --progress  --mode development",
+    "build": "cross-env NODE_ENV=production webpack --env.target=Wechat --env.min  --mode production",
     "test": "jest",
-    "version": "webpack -v"
+    "version": "webpack -v",
+    "v": "webpack-cli -v"
   },
   "main": "dist/app.js",
   "author": "xlinzexin",
@@ -64,8 +65,7 @@
     "stylelint-webpack-plugin": "^0.9.0",
     "ts-loader": "^5.3.3",
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "wxapp-webpack-plugin": "^0.18.0",
+    "webpack-cli": "^3.3.2",
     "wxml-loader": "^0.3.0"
   },
   "dependencies": {
