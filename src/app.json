@@ -1,5 +1,19 @@
 {
-  "pages": ["pages/main/home/index"],
+  "pages": ["pages/main/home/index","pages/main/user/index"],
+  "tabBar": {
+    "list": [
+      {
+        "iconPath": "images/123.jpg",
+        "pagePath": "pages/main/home",
+        "text": "首页"
+      },
+      {
+        "iconPath": "images/123.jpg",
+        "pagePath": "pages/main/user",
+        "text": "日志"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

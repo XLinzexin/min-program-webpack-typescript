@@ -247,8 +247,8 @@ export default class WXAppPlugin {
 		const { fileDependencies } = compilation;
 		this.tabBarIcons = this.tabBarIcons || [];
 		this.tabBarIcons.forEach((iconPath) => {
-			if (!~fileDependencies.indexOf(iconPath)) {
-				fileDependencies.push(iconPath);
+			if (!fileDependencies.has(iconPath)) {
+				fileDependencies.add(iconPath);
 			}
 		});
 	}
