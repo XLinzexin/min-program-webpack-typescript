@@ -1,48 +1,48 @@
-import { resolve } from 'path';
+import { resolve } from 'path'
 import webpack, {
 	DefinePlugin,
 	EnvironmentPlugin,
 	IgnorePlugin,
-	optimize,
-} from 'webpack';
+	optimize
+} from 'webpack'
 // import WXAppWebpackPlugin, { Targets } from "wxapp-webpack-plugin";
-import StylelintPlugin from 'stylelint-webpack-plugin';
-import MinifyPlugin from 'babel-minify-webpack-plugin';
-import CopyPlugin from 'copy-webpack-plugin';
-import pkg from './package.json';
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import MinifyPlugin from 'babel-minify-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
+import pkg from './package.json'
 import WXAppComponentPlugin, {
-	Targets,
-} from './webpack-plugin/wxapp-components-plugin/index';
+	Targets
+} from './webpack-plugin/wxapp-components-plugin/index'
 
-var ImageminPlugin = require('imagemin-webpack-plugin').default;
+var ImageminPlugin = require('imagemin-webpack-plugin').default
 
-const { NODE_ENV, LINT } = process.env;
-const isDev = NODE_ENV !== 'production';
-const shouldLint = !!LINT && LINT !== 'false';
-const srcDir = resolve('src');
+const { NODE_ENV, LINT } = process.env
+const isDev = NODE_ENV !== 'production'
+const shouldLint = !!LINT && LINT !== 'false'
+const srcDir = resolve('src')
 
 const copyPatterns = []
 	.concat(pkg.copyWebpack || [])
 	.map((pattern) =>
-		typeof pattern === 'string' ? { from: pattern, to: pattern } : pattern,
-	);
+		typeof pattern === 'string' ? { from: pattern, to: pattern } : pattern
+	)
 
 export default (env = {}) => {
-	const min = env.min;
-	const target = env.target || 'Wechat';
-	const isWechat = env.target !== 'Alipay';
-	const isAlipay = !isWechat;
+	const min = env.min
+	const target = env.target || 'Wechat'
+	const isWechat = env.target !== 'Alipay'
+	const isAlipay = !isWechat
 
 	const relativeFileLoader = (ext = '[ext]') => {
-		const namePrefix = isWechat ? '' : '[path]';
+		const namePrefix = isWechat ? '' : '[path]'
 		return {
 			loader: 'file-loader',
 			options: {
 				useRelativePath: isWechat,
 				name: `${namePrefix}[name].${ext}`,
-				context: srcDir,
-			},
-		};
+				context: srcDir
+			}
+		}
 	};
 
 	return {
@@ -52,13 +52,13 @@ export default (env = {}) => {
 				// isWechat &&
 				// 	`es6-promise/dist/es6-promise.auto${isDev ? ".min" : ""}.js`,
 
-				'./src/app.ts',
-			].filter(Boolean),
+				'./src/app.ts'
+			].filter(Boolean)
 		},
 		output: {
 			filename: '[name].js',
 			publicPath: '/',
-			path: resolve('dist'),
+			path: resolve('dist')
 		},
 		target: (compiler) => compiler.apply(new webpack.LoaderTargetPlugin(env.target || 'Wechat')),
 		module: {
@@ -67,13 +67,13 @@ export default (env = {}) => {
 					test: /\.tsx?$/,
 					include: /src/,
 					exclude: /node_modules/,
-					use: ['ts-loader', 'babel-loader', shouldLint && 'eslint-loader'].filter(Boolean),
+					use: ['ts-loader'].filter(Boolean)
 				},
 				{
 					test: /\.js$/,
 					include: /src/,
 					exclude: /node_modules/,
-					use: ['babel-loader', shouldLint && 'eslint-loader', 'source-map-loader'].filter(Boolean),
+					use: ['babel-loader', shouldLint && 'eslint-loader', 'source-map-loader'].filter(Boolean)
 				},
 				{
 					test: /\.wxs$/,
@@ -82,8 +82,8 @@ export default (env = {}) => {
 					use: [
 						relativeFileLoader(),
 						'babel-loader',
-						shouldLint && 'eslint-loader',
-					].filter(Boolean),
+						shouldLint && 'eslint-loader'
+					].filter(Boolean)
 				},
 				{
 					test: /\.(less|wxss|acss)$/,
@@ -91,30 +91,33 @@ export default (env = {}) => {
 					use: [
 						relativeFileLoader(),
 						{
-							loader: 'resolve-url-loader',
+							loader: 'resolve-url-loader'
 						},
 						{
-							loader: 'less-loader', // compiles Less to CSS
-						},
-					],
+							loader: 'less-loader' // compiles Less to CSS
+						}
+					]
 				},
 				{
-					test: /\.(json|png|jpg|gif)$/,
+					test: /\.(png|jpg|gif)$/,
 					include: /src/,
+					use: [
+						relativeFileLoader()
+					]
 				},
 
 				{
 					test: /\.json$/,
 					use: [
-						relativeFileLoader(),
-					],
+						relativeFileLoader()
+					]
 				},
 				{
 					test: /\.json$/,
 					type: 'javascript/auto',
 					include: /src/,
 					loader: resolve('webpack-plugin/json-loader.js')
-					,
+					
 				},
 				{
 					test: /\.(wxml|axml)$/,
@@ -125,26 +128,26 @@ export default (env = {}) => {
 							loader: 'wxml-loader',
 							options: {
 								root: srcDir,
-								enforceRelativePath: true,
-							},
-						},
-					],
-				},
-			],
+								enforceRelativePath: true
+							}
+						}
+					]
+				}
+			]
 		},
 		plugins: [
 			new EnvironmentPlugin({
-				NODE_ENV: 'development',
+				NODE_ENV: 'development'
 			}),
 			new DefinePlugin({
 				__DEV__: isDev,
 				__WECHAT__: isWechat,
 				__ALIPAY__: isAlipay,
 				wx: isWechat ? 'wx' : 'my',
-				my: isWechat ? 'wx' : 'my',
+				my: isWechat ? 'wx' : 'my'
 			}),
 			new WXAppComponentPlugin({
-				clear: !isDev,
+				clear: !isDev
 			}),
 			// new WXAppWebpackPlugin({
 			// 	clear: !isDev
@@ -153,7 +156,7 @@ export default (env = {}) => {
 			new IgnorePlugin(/vertx/),
 			shouldLint && new StylelintPlugin(),
 			min && new MinifyPlugin(),
-			new CopyPlugin(copyPatterns, { context: srcDir }),
+			new CopyPlugin(copyPatterns, { context: srcDir })
 			// new ImageminPlugin({
 			// 	disable: process.env.NODE_ENV !== "production",
 			// 	pngquant: {
@@ -165,14 +168,14 @@ export default (env = {}) => {
 		resolve: {
 			extensions: ['.js', 'wxss', 'less', '.json', '.webpack.js', '.web.js', '.ts'],
 			alias: {
-				'@': resolve('src'),
+				'@': resolve('src')
 			},
-			modules: [resolve(__dirname, 'src'), 'node_modules'],
+			modules: [resolve(__dirname, 'src'), 'node_modules']
 		},
 		watchOptions: {
 			poll: 1000, // 监测修改的时间(ms)
 			ignored: /dist|node_modules/,
-			aggregateTimeout: 300,
-		},
-	};
+			aggregateTimeout: 300
+		}
+	}
 };
