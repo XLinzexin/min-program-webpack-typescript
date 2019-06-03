@@ -132,7 +132,7 @@ declare namespace wx {
     /** 当前蓝牙设备的广播数据段中的 ManufacturerData 数据段。 */
     advertisData: ArrayBuffer;
     /** 当前蓝牙设备的广播数据段中的 ServiceUUIDs 数据段 */
-    advertisServiceUUIDs: Array<string>;
+    advertisServiceUUIDs: string[];
     /** 当前蓝牙设备的广播数据段中的 LocalName 数据段 */
     localName: string;
     /** 当前蓝牙设备的广播数据段中的 ServiceData 数据段 */
@@ -149,7 +149,7 @@ declare namespace wx {
     /** 当前蓝牙设备的广播数据段中的 ManufacturerData 数据段。 */
     advertisData: ArrayBuffer;
     /** 当前蓝牙设备的广播数据段中的 ServiceUUIDs 数据段 */
-    advertisServiceUUIDs: Array<string>;
+    advertisServiceUUIDs: string[];
     /** 当前蓝牙设备的广播数据段中的 LocalName 数据段 */
     localName: string;
     /** 当前蓝牙设备的广播数据段中的 ServiceData 数据段 */
@@ -607,11 +607,11 @@ declare namespace wx {
     /** 否 是否返回节点的 `scrollLeft` `scrollTop`，节点必须是 `scroll-view` 或者 `viewport` */
     scrollOffset?: boolean;
     /** 指定属性名列表，返回节点对应属性名的当前属性值（只能获得组件文档中标注的常规属性值，id class style 和事件绑定的属性值不可获取） */
-    properties?: Array<string>;
+    properties?: string[];
     /** 指定样式名列表，返回节点对应样式名的当前值
      *
      * 最低基础库： `2.1.0` */
-    computedStyle?: Array<string>;
+    computedStyle?: string[];
   }
   /** 文件数组 */
   interface FileSystemManagerGetSavedFileListSuccessCallbackResultFileItem {
@@ -639,7 +639,7 @@ declare namespace wx {
   }
   interface GetStorageInfoSyncOption {
     /** 当前 storage 中所有的 key */
-    keys: Array<string>;
+    keys: string[];
     /** 当前占用的空间大小, 单位 KB */
     currentSize: number;
     /** 限制的空间大小，单位 KB */
@@ -1227,7 +1227,7 @@ declare namespace wx {
   }
   interface StartBeaconDiscoveryOption {
     /** iBeacon 设备广播的 uuid 列表 */
-    uuids: Array<string>;
+    uuids: string[];
     /** 是否校验蓝牙开关，仅在 iOS 下有效 */
     ignoreBluetoothAvailable?: boolean;
     /** 接口调用成功的回调函数 */
@@ -1294,7 +1294,7 @@ declare namespace wx {
   }
   interface PreviewImageOption {
     /** 需要预览的图片链接列表。{% version('2.2.3') %} 起支持云文件ID。 */
-    urls: Array<string>;
+    urls: string[];
     /** 当前显示图片的链接 */
     current?: string;
     /** 接口调用成功的回调函数 */
@@ -1443,7 +1443,7 @@ declare namespace wx {
   }
   interface StartHCEOption {
     /** 需要注册到系统的 AID 列表 */
-    aid_list: Array<string>;
+    aid_list: string[];
     /** 接口调用成功的回调函数 */
     success?: StartHCESuccessCallback;
     /** 接口调用失败的回调函数 */
@@ -1534,7 +1534,7 @@ declare namespace wx {
     | 'PUT'
     | 'DELETE'
     | 'TRACE'
-    | 'CONNECT' | 'string'
+    | 'CONNECT' | 'string';
     /** 返回的数据格式
      *
      * 可选值：
@@ -1572,7 +1572,7 @@ declare namespace wx {
     /** 子协议数组
      *
      * 最低基础库： `1.4.0` */
-    protocols?: Array<string>;
+    protocols?: string[];
     /** 接口调用成功的回调函数 */
     success?: ConnectSocketSuccessCallback;
     /** 接口调用失败的回调函数 */
@@ -1754,7 +1754,7 @@ declare namespace wx {
   }
   interface StartBluetoothDevicesDiscoveryOption {
     /** 要搜索但蓝牙设备主 service 的 uuid 列表。某些蓝牙设备会广播自己的主 service 的 uuid。如果设置此参数，则只搜索广播包有对应 uuid 的主服务的蓝牙设备。建议主要通过该参数过滤掉周边不需要处理的其他蓝牙设备。 */
-    services?: Array<string>;
+    services?: string[];
     /** 是否允许重复上报同一设备。如果允许重复上报，则 `wx.onBlueToothDeviceFound` 方法会多次上报同一设备，但是 RSSI 值会有不同。 */
     allowDuplicatesKey?: boolean;
     /** 上报设备的间隔。0 表示找到新设备立即上报，其他数值根据传入的间隔上报。 */
@@ -2019,7 +2019,7 @@ declare namespace wx {
     /** 要显示在可视区域内的坐标点列表 */
     points: MapPostion;
     /** 坐标点形成的矩形边缘到地图边缘的距离，单位像素。格式为[上,右,下,左]，安卓上只能识别数组第一项，上下左右的padding一致。开发者工具暂不支持padding参数。 */
-    padding?: Array<number>;
+    padding?: number[];
     /** 接口调用成功的回调函数 */
     success?: IncludePointsSuccessCallback;
     /** 接口调用失败的回调函数 */
@@ -2071,7 +2071,7 @@ declare namespace wx {
   }
   interface GetConnectedBluetoothDevicesOption {
     /** 蓝牙设备主 service 的 uuid 列表 */
-    services: Array<string>;
+    services: string[];
     /** 接口调用成功的回调函数 */
     success?: GetConnectedBluetoothDevicesSuccessCallback;
     /** 接口调用失败的回调函数 */
@@ -2120,7 +2120,7 @@ declare namespace wx {
   /** 选项 */
   interface CreateIntersectionObserverOption {
     /** 一个数值数组，包含所有阈值。 */
-    thresholds?: Array<number>;
+    thresholds?: number[];
     /** 初始的相交比例，如果调用时检测到的相交比例与这个值不相等且达到阈值，则会触发一次监听器的回调函数。 */
     initialRatio?: number;
     /** 是否同时观测多个目标节点（而非一个），如果设为 true ，observe 的 targetSelector 将选中多个节点（注意：同时选中过多节点将影响渲染性能）
@@ -2596,7 +2596,7 @@ declare namespace wx {
   }
   interface GetStorageInfoSuccessCallbackOption {
     /** 当前 storage 中所有的 key */
-    keys: Array<string>;
+    keys: string[];
     /** 当前占用的空间大小, 单位 KB */
     currentSize: number;
     /** 限制的空间大小，单位 KB */
@@ -3050,7 +3050,7 @@ declare namespace wx {
   }
   interface ShowActionSheetOption {
     /** 按钮的文字数组，数组长度最大为 6 */
-    itemList: Array<string>;
+    itemList: string[];
     /** 按钮的文字颜色 */
     itemColor?: string;
     /** 接口调用成功的回调函数 */
@@ -3143,7 +3143,7 @@ declare namespace wx {
     | 'hex'
     | 'ucs2' | 'ucs-2' | 'utf16le' | 'utf-16le'
     | 'utf-8' | 'utf8'
-    | 'latin1' | string
+    | 'latin1' | string;
     /** 接口调用成功的回调函数 */
     success?: ReadFileSuccessCallback;
     /** 接口调用失败的回调函数 */
@@ -3321,7 +3321,7 @@ declare namespace wx {
   }
   interface OnBeaconUpdateCallbackResult {
     /** 当前搜寻到的所有 iBeacon 设备列表 */
-    beacons: Array<IBeaconInfo>;
+    beacons: IBeaconInfo[];
   }
   interface RmdirFailCallbackResult {
     /** 错误信息
@@ -3459,7 +3459,7 @@ declare namespace wx {
   }
   interface ReaddirSuccessCallbackResult {
     /** 指定目录下的文件名数组。 */
-    files: Array<string>;
+    files: string[];
   }
   interface TakePhotoSuccessCallbackResult {
     /** 照片文件的临时路径 */
@@ -3652,11 +3652,11 @@ declare namespace wx {
   }
   interface OnGetWifiListCallbackResult {
     /** Wi-Fi 列表数据 */
-    wifiList: Array<WifiInfo>;
+    wifiList: WifiInfo[];
   }
   interface GetBeaconsSuccessCallbackResult {
     /** iBeacon 设备列表 */
-    beacons: Array<IBeaconInfo>;
+    beacons: IBeaconInfo[];
   }
   interface OnWifiConnectedCallbackResult {
     /** [WifiInfo]((WifiInfo))
@@ -3805,7 +3805,7 @@ declare namespace wx {
   }
   interface ChooseImageSuccessCallbackResult {
     /** 图片的本地临时文件路径列表 */
-    tempFilePaths: Array<string>;
+    tempFilePaths: string[];
     /** 图片的本地临时文件列表
      *
      * 最低基础库： `1.2.0`
@@ -4279,47 +4279,47 @@ declare namespace wx {
   }
 
   interface OnLocalServiceFoundCallbackOptions {
-    serviceType: string
-    serviceName: string
-    ip: string
-    port: number
+    serviceType: string;
+    serviceName: string;
+    ip: string;
+    port: number;
   }
 
   interface OnLocalServiceLostCallbackOptions {
-    serviceType: string
-    serviceName: string
+    serviceType: string;
+    serviceName: string;
   }
 
   interface OnLocalServiceResolveFailCallbackOptions {
-    serviceType: string
-    serviceName: string
+    serviceType: string;
+    serviceName: string;
   }
 
   interface StartLocalServiceDiscoveryOptions {
-    serviceType: string
-    success?(res: GeneralCallbackResult): void
-    fail?(res: GeneralCallbackResult): void
-    complete?(res: GeneralCallbackResult): void
+    serviceType: string;
+    success?(res: GeneralCallbackResult): void;
+    fail?(res: GeneralCallbackResult): void;
+    complete?(res: GeneralCallbackResult): void;
   }
 
   interface StopLocalServiceDiscoveryOptions {
-    success?(res: GeneralCallbackResult): void
-    fail?(res: GeneralCallbackResult): void
-    complete?(res: GeneralCallbackResult): void
+    success?(res: GeneralCallbackResult): void;
+    fail?(res: GeneralCallbackResult): void;
+    complete?(res: GeneralCallbackResult): void;
   }
 
   interface WX {
-
-    offLocalServiceDiscoveryStop(callback: () => void): void
-    offLocalServiceFound(callback: () => void): void
-    offLocalServiceLost(callback: () => void): void
-    offLocalServiceResolveFail(callback: () => void): void
-    onLocalServiceDiscoveryStop(callback: () => void): void
-    onLocalServiceFound(callback: (res: OnLocalServiceFoundCallbackOptions) => void): void
-    onLocalServiceLost(callback: (res: OnLocalServiceLostCallbackOptions) => void): void
-    onLocalServiceResolveFail(callback: (res: OnLocalServiceResolveFailCallbackOptions) => void): void
-    startLocalServiceDiscovery(options: StartLocalServiceDiscoveryOptions): void
-    stopLocalServiceDiscovery(options: StopLocalServiceDiscoveryOptions): void
+    _Component(cm: any, options: any): void;
+    offLocalServiceDiscoveryStop(callback: () => void): void;
+    offLocalServiceFound(callback: () => void): void;
+    offLocalServiceLost(callback: () => void): void;
+    offLocalServiceResolveFail(callback: () => void): void;
+    onLocalServiceDiscoveryStop(callback: () => void): void;
+    onLocalServiceFound(callback: (res: OnLocalServiceFoundCallbackOptions) => void): void;
+    onLocalServiceLost(callback: (res: OnLocalServiceLostCallbackOptions) => void): void;
+    onLocalServiceResolveFail(callback: (res: OnLocalServiceResolveFailCallbackOptions) => void): void;
+    startLocalServiceDiscovery(options: StartLocalServiceDiscoveryOptions): void;
+    stopLocalServiceDiscovery(options: StopLocalServiceDiscoveryOptions): void;
 
     /** [Object wx.getAccountInfoSync()](wx.getAccountInfoSync.md)
     *
@@ -9090,7 +9090,7 @@ declare namespace wx {
       /** 虚线偏移量 */
       offset: number,
       /** 一组描述交替绘制线段和间距（坐标空间单位）长度的数字 */
-      pattern: Array<number>,
+      pattern: number[],
     ): void;
     /** [CanvasContext.setMiterLimit(number miterLimit)](CanvasContext.setMiterLimit.md)
      *
@@ -10083,7 +10083,7 @@ declare namespace wx {
     readdirSync(
       /** 要读取的目录路径 */
       dirPath: string,
-    ): Array<string>;
+    ): string[];
     /** [FileSystemManager.readFile(Object object)](FileSystemManager.readFile.md)
      *
      * 读取本地文件内容 */
@@ -10185,7 +10185,7 @@ declare namespace wx {
     /** [Array.<Object> Animation.export()](Animation.export.md)
      *
      * 导出动画队列。**export 方法每次调用后会清掉之前的动画操作。** */
-    export(): Array<Object>;
+    export(): Record<string, any>[];
     /** [Animation.step(Object object)](Animation.step.md)
      *
      * 表示一组动画完成。可以在一组动画中调用任意多个动画方法，一组动画中的所有动画会同时开始，一组动画完成后才会进行下一组动画。 */

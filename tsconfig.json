@@ -36,18 +36,61 @@
 // "buildOnSave": false,           
 // "atom": { "rewriteTsconfig": false }
 // }
+// {
+//   "compilerOptions": {
+//     "target": "esnext",
+//     "module": "esnext",
+//     "jsx": "preserve",
+//     "importHelpers": true,
+//     // "moduleResolution": "node",
+//     "experimentalDecorators": true,
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true,
+//     "sourceMap": true,
+//     "baseUrl": ".",
+//     "paths": {
+//       "@/*": [
+//         "src/*"
+//       ]
+//     },
+//     "lib": [
+//       "esnext",
+//       "dom",
+//       "dom.iterable",
+//       "scripthost"
+//     ]
+//   },
+//   "include": [
+//     "src/**/*.ts",
+//     "src/**/*.tsx",
+//     "src/**/*.vue",
+//     "tests/**/*.ts",
+//     "tests/**/*.tsx"
+//   ],
+//   "exclude": [
+//     "node_modules"
+//   ]
+// }
+
 {
   "compilerOptions": {
-      "module": "commonjs",
+      // "target": "es6",
+      "module": "esnext",
       "allowJs": true,
-      "noImplicitAny": true,
+      "noImplicitAny": false,
       "removeComments": true,
+      "importHelpers": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "suppressExcessPropertyErrors": false,
       "preserveConstEnums": true,
       "sourceMap": true,
       "baseUrl": ".",
       "paths": {
         "@/*": ["src/*"]
-      }
+      },
+      
   },
   "include": [
     "src/typings/*"

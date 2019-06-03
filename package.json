@@ -4,12 +4,11 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "webpack --watch --progress",
-    "dev": "webpack --watch --progress  --mode development",
-    "build": "cross-env NODE_ENV=production webpack --env.target=Wechat --env.min  --mode production",
+    "start": "webpack --watch --progress --mode development",
+    "dev": "webpack --watch --progress --mode development",
+    "build": "cross-env NODE_ENV=production --mode production webpack --env.target=Wechat --env.min",
     "test": "jest",
-    "version": "webpack -v",
-    "v": "webpack-cli -v"
+    "version": "webpack -v"
   },
   "main": "dist/app.js",
   "author": "xlinzexin",
@@ -21,6 +20,9 @@
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@tinajs/wxml-loader": "^0.3.0-fork.0",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "@vue/eslint-config-typescript": "^4.0.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-jest": "21.x",
@@ -35,7 +37,8 @@
     "copy-webpack-plugin": "^4.6.0",
     "create-wxapp-page": "^2.0.8",
     "cross-env": "^5.0.1",
-    "eslint": "^4.19.1",
+    "eslint": "^5.16.0",
+    "eslint-config-alloy": "^2.0.0-alpha.2",
     "eslint-config-cantonjs": "^1.0.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-import-resolver-webpack": "^0.10.0",
@@ -65,7 +68,8 @@
     "stylelint-webpack-plugin": "^0.9.0",
     "ts-loader": "^5.3.3",
     "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.2",
+    "webpack-cli": "^3.3.0",
+    "wxapp-webpack-plugin": "^0.18.0",
     "wxml-loader": "^0.3.0"
   },
   "dependencies": {

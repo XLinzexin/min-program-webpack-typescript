@@ -1,6 +1,9 @@
 import '@/utils/extend'
 import '@/utils/prevload'
 import { MyApp } from './d'
+import { Component, View } from "./lib/class-component/page";
+
+Object.assign(global, { __Component: Component })
 
 App<MyApp>({
 	async onLaunch (options: object) {
