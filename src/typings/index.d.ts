@@ -10,3 +10,30 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /// <reference path="./lib.wa.es6.d.ts" />
 /// <reference path="./wx/index.d.ts" />
+
+// declare class TmgPage {
+//   public setData: (obj: any, cb?: () => void) => void
+//   public readonly __proto__: any
+// }
+interface WXTarget {
+  id: string;
+  dataset: any;
+  offsetLeft: number;
+  offsetTop: number;
+}
+
+/** 微信绑定事件的回调 */
+interface WXEvent {
+  /** 点击事件 详情 */
+  detail: any;
+  currentTarget: WXTarget;
+  target: WXTarget;
+  type?: string;
+  timeStamp?: number;
+  touches?: any[];
+}
+// eslint-disable-next-line
+interface global {
+  __Component: <S>(options?: any) => any;
+}
+// export = TmgPage;
