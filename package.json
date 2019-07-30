@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --watch --progress --mode development",
     "dev": "webpack --watch --progress --mode development",
-    "build": "cross-env NODE_ENV=production --mode production webpack --env.target=Wechat --env.min",
+    "build": "webpack  --mode production",
     "test": "jest",
     "version": "webpack -v"
   },
