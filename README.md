@@ -31,3 +31,5 @@
 - 使用 wxs 作为过滤器可以使业务逻辑解耦，有利于代码维护，提供了一个 demo 用于处理将图片域名转化为 cdn 域名
 - 在根目录有 component 和 page 的 template 文件，新建页面的时候复制粘贴过去就行了。
 - 该项目参考 https://github.com/Cap32/wxapp-webpack-plugin， 该项目地址 https://github.com/XLinzexin/min-program-webpack
+
+随便写点东西
